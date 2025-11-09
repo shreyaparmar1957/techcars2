@@ -24,3 +24,11 @@ TechCars2 is a responsive web-based platform designed to manage second-hand and 
 Move the Project Folder : 
 Copy the extracted folder (e.g., techcars2) into your XAMPP htdocs directory:
 C:\xampp\htdocs\
+
+## 📸 Screenshots
+<img width="1915" height="1118" alt="image" src="https://github.com/user-attachments/assets/f587a388-212e-47e2-a432-44a883f35627" />
+<img width="1903" height="1105" alt="image" src="https://github.com/user-attachments/assets/c670651a-80ce-4019-98cf-1cb1394ce3ed" />
+<img width="1868" height="1054" alt="image" src="https://github.com/user-attachments/assets/55a6b8e6-79be-45b4-89b7-d5de22134584" />
+
+
+
