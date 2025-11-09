@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add New Car - TechCars2</title>
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --accent:#1565d8;
+      --muted:#6b7280;
+      --radius:12px;
+      --shadow: 0 8px 24px rgba(16,24,40,0.08);
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background: linear-gradient(180deg,#eef2ff 0%,var(--bg) 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 380px;
+    }
+
+    @media (max-width:880px){
+      .card{ grid-template-columns: 1fr; }
+    }
+
+    .main{
+      padding:28px;
+    }
+
+    .side{
+      padding:28px;
+      border-left:1px solid #f0f4ff;
+      background: linear-gradient(180deg, rgba(241,247,255,0.6), rgba(255,255,255,0));
+    }
+
+    h1{
+      margin:0 0 6px 0;
+      font-size:24px;
+      letter-spacing:-0.2px;
+    }
+    p.lead{
+      margin:0 0 18px 0;
+      color:var(--muted);
+    }
+
+    form .row{
+      display:flex;
+      gap:12px;
+      margin-bottom:14px;
+      align-items:stretch;
+    }
+    @media (max-width:520px){
+      form .row{ flex-direction:column; }
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    input[type="text"], input[type="number"], textarea, input[type="file"] {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e9ee;
+      background:#fff;
+      font-size:15px;
+      outline:none;
+    }
+
+    input[type="file"] {
+      padding:8px;
+      height:auto;
+      cursor:pointer;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:0;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background: linear-gradient(180deg,var(--accent), #0b57c9);
+      color:#fff;
+      box-shadow: 0 8px 18px rgba(11,87,201,0.14);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(21,101,232,0.12);
+      text-decoration:none;
+      display:inline-flex;
+      padding:10px 14px;
+      border-radius:10px;
+    }
+
+    /* preview box (static without JS) */
+    .preview{
+      border-radius:10px;
+      border:1px solid #eef4ff;
+      background:#fbfdff;
+      padding:12px;
+      min-height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .meta{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .hint{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* form field spacing */
+    .form-group{ margin-bottom:12px; }
+
+    /* subtle responsive paddings */
+    .main, .side{ padding:22px; }
+    @media (max-width:520px){
+      .main, .side{ padding:16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="main">
+      <div class="main">
+        <h1>Add a New Car</h1>
+        <p class="lead">Add details about the car and upload an image.</p>
+
+        <form action="backend/add_car.php" method="POST" enctype="multipart/form-data" novalidate>
+          <div class="row">
+            <div style="flex:1" class="form-group">
+              <label for="name">Car Name</label>
+              <input id="name" name="name" type="text" placeholder="e.g. BMW X7" required>
+            </div>
+
+            <div style="width:170px" class="form-group">
+              <label for="price">Price (₹)</label>
+              <input id="price" name="price" type="number" placeholder="50000" min="0" step="0.01" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Short description about the car" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image">Car Image</label>
+            <input id="image" name="image" type="file" accept="image/*" required>
+            <div class="small hint">Recommended: JPG/PNG — max 3MB.</div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Add Car</button>
+            <a href="index.html" class="btn-secondary">Back to Home</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="side" aria-hidden="true">
+        <div class="meta">Image Preview</div>
+        <div class="preview">
+          No image selected (preview requires JavaScript)
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>
